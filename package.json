@@ -1,0 +1,28 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "week12",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamesD11/bamazon.git"
+  },
+  "keywords": [
+    "js",
+    "node",
+    "mysql"
+  ],
+  "author": "James D",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JamesD11/bamazon/issues"
+  },
+  "homepage": "https://github.com/JamesD11/bamazon#readme",
+  "dependencies": {
+    "mysql": "^2.10.2",
+    "prompt": "^1.0.0"
+  }
+}
