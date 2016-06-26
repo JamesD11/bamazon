@@ -21,7 +21,7 @@ con.query('Select ItemID,ProductName,DepartmentName,Price FROM products',functio
 	if (err){
 		throw (err);
 	}else{
-		console.log('Welcome to Bamazon, home of the Bamazon, the greatest fictional sporting goods store of all time')
+		console.log('Welcome to Bamazon, home of the Bamazon, the greatest fictional sporting goods store of all time');
 		var results= result;
 		for (var i = 0; i < results.length; i++) {
 
@@ -42,26 +42,41 @@ var order= function(){
  						throw (err);
  					}else{
  						for (var i = 0; i < list.length; i++) {
- 							if(list[i].StockQuantity < result.quantity){
+ 							if(list[i].StockQuantity > result.quantity && list[i].ProductName === result.ProductName){
+ 								console.log('You owe: $' + result.quantity * list[i].Price);
+
+
+
+ 								break;
+
+ 							}else if( list[i].StockQuantity < result.quantity){
  								console.log('This request exceeds stock capacity! Try again.');
  								order();
  								break;
- 							}
- 							if (list[i].ProductName === result.ProductName){
- 								console.log('You owe: $' + result.quantity * list[i].Price);
+
  								//var newQuant= function(){
  								//	con.query('UPDATE products SET StockQuantity= ' + listStockQuantity)
  								}
- 				
+
  						    }
  						}
- 					}
+
  				})
  			}
  			//console.log('You ordered: ' + result.quantity + ' ' + result.ProductName);
- 			
+
  		});
  	 	}
  	 	order();
- 	 });
 
+ 	 });
+//cant get this to run for some reason trying to update the DB
+var quant= function(){
+ 	con.query('UPDATE products SET StockQuantity=' (result.StockQuantity - result.quantity) + 'WHERE ProductName ="' + result.ProductName + '"', function(err, newList){
+ 	if(err){
+ 		throw (err);
+ 		}
+ 	console.log('table ammended');
+ 	});
+ 	quant();
+ 								}
