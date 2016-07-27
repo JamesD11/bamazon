@@ -7,8 +7,9 @@ var con = mysql.createConnection({
 	user: 'root',
 	password: 'root',
 	database: 'bamazon',
-	port: 8889
+	port: 8889 // Using MAMP
 });
+
 
 con.connect(function (err){
 	if (err){
@@ -44,29 +45,25 @@ var order= function(){
  						for (var i = 0; i < list.length; i++) {
  							if(list[i].StockQuantity > result.quantity && list[i].ProductName === result.ProductName){
  								console.log('You owe: $' + result.quantity * list[i].Price);
-
-
-
- 								break;
+              //  con.query('UPDATE products SET' + result.ProductName=(result.ProductName.StockQuantity -result.quantity),function(err, result){
+              //   if (err){
+         		// 				throw (err);
+         		// 			}else{
+              //       console.log('updated!');
 
  							}else if( list[i].StockQuantity < result.quantity){
  								console.log('This request exceeds stock capacity! Try again.');
  								order();
- 								break;
 
- 								//var newQuant= function(){
- 								//	con.query('UPDATE products SET StockQuantity= ' + listStockQuantity)
  								}
 
- 						    }
- 						}
-
- 				})
+ 						  }
+          }
+ 				});
  			}
  			//console.log('You ordered: ' + result.quantity + ' ' + result.ProductName);
-
  		});
- 	 	}
+  };
  	 	order();
 
  	 });
