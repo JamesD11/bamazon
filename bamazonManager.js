@@ -28,6 +28,7 @@ else{
     switch(result.Number){
         case '1'://if input[0] = my-tweets call twitter() function
             console.log('Number 1 working!');
+            numberOne();
             break;
         case '2':
             console.log('Number 2 working!');
@@ -41,3 +42,16 @@ else{
             }
   }
 });
+
+function numberOne(){
+    con.query('SELECT * FROM products', function(err, result){
+      if (err){
+        throw (err);
+      }else{
+        for (var i = 0; i < result.length; i++) {
+        console.log(result[i].ItemID + '  ' + result[i].ProductName + ' - Department: ' + result[i].DepartmentName +
+        '---$' + result[i].Price + '--- Total: ' + result[i].StockQuantity);
+      }
+    }
+  });
+}
