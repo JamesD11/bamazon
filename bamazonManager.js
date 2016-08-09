@@ -25,25 +25,19 @@ prompt.get(['Number'], function(err, result){
     throw (err);
   }
 else{
-  console.log('Result: ' + result.Number);
-}
+    switch(result.Number){
+        case '1'://if input[0] = my-tweets call twitter() function
+            console.log('Number 1 working!');
+            break;
+        case '2':
+            console.log('Number 2 working!');
+            break;
+        case '3':
+            console.log('Number 3 working!');
+            break;
+        case '4':
+            console.log('Number 4 working!');
+            break;
+            }
+  }
 });
-// switch(input[0]){
-//     case "my-tweets"://if input[0] = my-tweets call twitter() function
-//         twitter();
-//         break;
-//     case "do-what-it-says":
-//         noEntry();
-//         break;
-//     case "spotify-this-song":
-//         	spotify(input[1]);
-//         break;
-//     case "movie-this":
-//         if(input[1]){
-//         	request();
-//         }else{
-//         	input[1]= "Mr. Nobdy";
-//         	request();
-//         }
-//         break;
-// }
