@@ -14,6 +14,7 @@ var con = mysql.createConnection({
 
 con.connect(function (err){
 	if (err){
+		console.log('Start the server u big dummy');
 		callback(err);
 	}
 	//console.log('connected');
