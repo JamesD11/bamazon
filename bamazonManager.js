@@ -89,14 +89,16 @@ function numberThree(){
     }
 
     console.log('\n**Please select which product you would like to add inventory to and then enter the number of units to be added(ex: 4)**');
-    prompt.get(['Product','Add'], function(err, result){
+    prompt.get(['Product','Add'], function(err, input){
       if(err){
         throw (err);
       }
     else{
-      con.query()
-      console.log(result.Product);
-      console.log(result.Add);
+			var total = result.StockQuantity + input.Add;
+			console.log(total);
+      con.query('UPDATE `products` SET `StockQuantity`=' + total + 'WHERE `ProductName=`' + input.product);
+      console.log(input.Product);
+      console.log(input.Add);
     }
 
     });
@@ -104,10 +106,14 @@ function numberThree(){
 }
 
 function numberFour(){
-    con.query('SELECT * FROM products', function(err, result){
-      if (err){
-        throw (err);
-      }else{
-    }
-  });
+	con.query('SELECT * FROM products', function(err, result){
+		if (err){
+			throw (err);
+		}else{
+			console.log('\n Current Products:');
+			for (var i = 0; i < result.length; i++) {
+				console.log(result[i].ProductName);
+			}
+	}
+});
 }
