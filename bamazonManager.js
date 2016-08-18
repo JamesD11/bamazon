@@ -14,14 +14,14 @@ var con = mysql.createConnection({
 
 con.connect(function (err){
 	if (err){
-		console.log('Start the server u big dummy');
+		console.log('\n\n ** START THE SERVER YOU BIG DUMMY ** \n');
 		callback(err);
 	}
 	//console.log('connected');
 });
 
 //start program
-console.log('Please select from the following by typing 1,2,3 or 4.\n 1) View Products for Sale\n 2) View Low Inventory\n 3) Add to Inventory\n 4) Add New Product');
+console.log('\nPlease select from the following by typing 1,2,3 or 4.\n 1) View Products for Sale\n 2) View Low Inventory\n 3) Add to Inventory\n 4) Add New Product');
 //get user input
 prompt.get(['Number'], function(err, result){
   if(err){
@@ -78,32 +78,27 @@ function numberTwo(){
   });
 }
 
+// set global variable? scope issue with second part
 function numberThree(){
-    con.query('SELECT * FROM products', function(err, result){
-      if (err){
-        throw (err);
-      }else{
-        console.log('\nProducts:');
-        for (var i = 0; i < result.length; i++) {
-          console.log(result[i].ProductName);
-        }
-    }
+  setTimeout(function change(){
 
-    console.log('\n**Please select which product you would like to add inventory to and then enter the number of units to be added(ex: 4)**');
-    prompt.get(['Product','Add'], function(err, input){
+    console.log('\n**Please select which product ID you would like to add inventory to and then enter the number of units to be added(ex: 4)**');
+    prompt.get(['itemID','add'], function(err, result){
       if(err){
         throw (err);
       }
-    else{
-			var total = result.StockQuantity + input.Add;
-			console.log(total);
-      con.query('UPDATE `products` SET `StockQuantity`=' + total + 'WHERE `ProductName=`' + input.product);
-      console.log(input.Product);
-      console.log(input.Add);
+      con.query('UPDATE products SET StockQuantity= ' + result.add + 'WHERE itemID= "' + result.itemID);
+			if(err){
+				throw (err);
+			}else{
+			console.log('Worked!');
+			console.log(result.itemID);
+      console.log(result.add);
     }
 
     });
-  });
+  },900);
+	numberOne();
 }
 
 function numberFour(){
