@@ -2,6 +2,7 @@
 var mysql= require('mysql');
 var prompt= require('prompt');
 
+
 //set up connection with db
 var con = mysql.createConnection({
 	host: 'localhost',
@@ -110,6 +111,14 @@ function numberFour(){
 			for (var i = 0; i < result.length; i++) {
 				console.log(result[i].ProductName);
 			}
-	}
+			console.log('\n**Please add a product to the database');
+			prompt.get(['ProductName','DepartmentName','Price','StockQuantity'], function(err, result){
+				if(err){
+					throw (err);
+				}
+
+	});
+}
 });
+
 }
