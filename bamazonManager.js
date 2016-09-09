@@ -83,18 +83,18 @@ function numberTwo(){
 function numberThree(){
   setTimeout(function change(){
 
-    console.log('\n**Please select which product ID you would like to add inventory to and then enter the number of units to be added(ex: 4)**');
-    prompt.get(['itemID','add'], function(err, result){
+    console.log('\n**Please select which product ID you would like to update inventory for and then enter the total number of units(ex: 4)**');
+    prompt.get(['itemID','total'], function(err, result){
       if(err){
         throw (err);
       }
-      con.query('UPDATE products SET StockQuantity= "' + result.add + '"' + 'WHERE itemID= "' + result.itemID + '"');
+      con.query('UPDATE products SET StockQuantity= "' + result.total + '"' + 'WHERE itemID= "' + result.itemID + '"');
 			if(err){
 				throw (err);
 			}else{
 			console.log('Worked!');
 			console.log(result.itemID);
-      console.log(result.add);
+      console.log(result.total);
     }
 
     });
