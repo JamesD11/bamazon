@@ -88,7 +88,7 @@ function numberThree(){
       if(err){
         throw (err);
       }
-      con.query('UPDATE products SET StockQuantity= ' + result.add + 'WHERE itemID= "' + result.itemID);
+      con.query("UPDATE products SET StockQuantity= ' + result.add + 'WHERE itemID=' + result.itemID'");
 			if(err){
 				throw (err);
 			}else{
@@ -107,10 +107,7 @@ function numberFour(){
 		if (err){
 			throw (err);
 		}else{
-			console.log('\n Current Products:');
-			for (var i = 0; i < result.length; i++) {
-				console.log(result[i].ProductName);
-			}
+			numberOne();
 			console.log('\n**Please add a product to the database');
 			prompt.get(['ProductName','DepartmentName','Price','StockQuantity'], function(err, result){
 				if(err){
