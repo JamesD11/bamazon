@@ -115,8 +115,11 @@ function numberFour(){
 			prompt.get(['ProductName','DepartmentName','Price','StockQuantity'], function(err, result){
 				if(err){
 					throw (err);
-				}
-
+				}else{
+				console.log('Worked!');
+				console.log(result.itemID);
+	      console.log(result.add);
+	    }
 	});
 }
 });
