@@ -88,7 +88,7 @@ function numberThree(){
       if(err){
         throw (err);
       }
-      con.query("UPDATE products SET StockQuantity= ' + result.add + 'WHERE itemID=' + result.itemID'");
+      con.query('UPDATE products SET StockQuantity= "' + result.add + '"' + 'WHERE itemID= "' + result.itemID + '"');
 			if(err){
 				throw (err);
 			}else{
