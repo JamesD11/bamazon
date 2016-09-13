@@ -103,22 +103,25 @@ function numberThree(){
 }
 
 function numberFour(){
-	con.query('SELECT * FROM products', function(err, result){
-		if (err){
-			throw (err);
-		}else{
+	setTimeout(function change(){
+
+		    console.log('\n**Please add a product to the database');
+		    prompt.get(['ProductName','DepartmentName','Price','StockQuantity'], function(err, result){
+		      if(err){
+		        throw (err);
+		      }
+		      con.query('INSERT INTO products (ProductName,DepartmentName,Price,StockQuantity) VALUES ()');
+					if(err){
+						throw (err);
+					}else{
+					console.log('Worked!');
+					console.log(result.ProductName);
+		      console.log(result.DepartmentName);
+					console.log(result.Price);
+					console.log(result.StockQuantity);
+		    	}
+				});
+		  },900);
 			numberOne();
-			console.log('\n**Please add a product to the database');
-			prompt.get(['ProductName','DepartmentName','Price','StockQuantity'], function(err, result){
-				if(err){
-					throw (err);
-				}else{
-				console.log('Worked!');
-				console.log(result.itemID);
-	      console.log(result.add);
-	    }
-	});
-}
-});
 
 }
