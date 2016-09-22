@@ -110,7 +110,8 @@ function numberFour(){
 		      if(err){
 		        throw (err);
 		      }
-		      con.query('INSERT INTO products (ProductName,DepartmentName,Price,StockQuantity) VALUES ()');
+		      con.query("INSERT INTO products(ProductName,DepartmentName,Price,StockQuantity) VALUES ('" + result.ProductName + "','" + result.DepartmentName + "'," + result.Price + "," +
+										result.StockQuantity + ")");
 					if(err){
 						throw (err);
 					}else{

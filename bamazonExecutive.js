@@ -13,7 +13,9 @@ var con = mysql.createConnection({
 
 con.connect(function (err){
 	if (err){
+		console.log('\n\n ** START THE SERVER YOU BIG DUMMY ** \n');
 		callback(err);
-	}
+	}else{
 	console.log('connected');
+  }
 });
